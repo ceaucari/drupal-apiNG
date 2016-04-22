@@ -1,0 +1,117 @@
+<?php
+/**
+ * @file aping.module
+ *
+ * https://github.com/JohnnyTheTank/apiNG
+ * apiNG implementation in Drupal
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function aping_menu() {
+  $items = array();
+  $items['admin/config/services/aping'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'apiNG',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('aping_admin_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'aping.admin.inc',
+  );
+  // $items['js/jquery_social_stream/' . JQUERY_SOCIAL_STREAM_TWITTER_PATH] = array(
+  //   'page callback' => 'jquery_social_stream_twitter_callback',
+  //   'file' => 'jquery_social_stream.js.inc',
+  //   'access callback' => TRUE,
+  // );
+  // $items['js/jquery_social_stream/' . JQUERY_SOCIAL_STREAM_FACEBOOK_PATH] = array(
+  //   'page callback' => 'jquery_social_stream_facebook_callback',
+  //   'file' => 'jquery_social_stream.js.inc',
+  //   'access callback' => TRUE,
+  // );
+  return $items;
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function aping_block_info() {
+  $blocks['social-wall'] = array(
+    'info' => t('apiNG Social Wall'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function aping_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'social-wall':
+      $path = drupal_get_path('module', 'aping');
+      $block['subject'] = t('Social Wall');
+      $block['content'] = array(
+        '#theme' => 'social_wall',
+        '#attached' => array(
+          'js' => array(
+
+            // Angular
+            'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
+
+            // apiNG
+            'https://cdn.jsdelivr.net/aping/latest/aping.min.js',
+
+            // apiNG config for api keys (only for plugins, that needs api keys)
+            $path . '/aping/aping-config.js',
+
+            // apiNG plugins
+            'https://cdn.jsdelivr.net/aping.plugin-facebook/latest/aping-plugin-facebook.min.js',
+            'https://cdn.jsdelivr.net/aping.plugin-codebird/latest/aping-plugin-codebird.min.js',
+            'https://cdn.jsdelivr.net/aping.plugin-instagram/latest/aping-plugin-instagram.min.js',
+            'https://cdn.jsdelivr.net/aping.plugin-youtube/latest/aping-plugin-youtube.min.js',
+
+            // Not used now
+            'https://cdn.jsdelivr.net/aping.plugin-vimeo/latest/aping-plugin-vimeo.min.js',
+            'https://cdn.jsdelivr.net/aping.plugin-flickr/latest/aping-plugin-flickr.min.js',
+            'https://cdn.jsdelivr.net/aping.plugin-dailymotion/latest/aping-plugin-dailymotion.min.js',
+            'https://cdn.jsdelivr.net/aping.plugin-tumblr/latest/aping-plugin-tumblr.min.js',
+            'https://cdn.jsdelivr.net/aping.plugin-rss/latest/aping-plugin-rss.min.js',
+
+            // apiNG design
+            $path . '/aping/aping-design-default.js',
+
+            // apiNG design dependencies
+            'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.min.js',
+            'https://cdn.jsdelivr.net/angular.masonry-packed/0.14.5/angular-masonry-packed.min.js',
+            'https://cdn.jsdelivr.net/angular.linkify/1.2.0/angular-linkify.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js',
+
+            // angular module
+            $path . '/social_wall.js',
+          ),
+
+          'css' => array(
+            $path . '/aping/aping-design-default.css',
+            'https://fonts.googleapis.com/css?family=Economica',
+          ),
+        ),
+      );
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function aping_theme() {
+  return array(
+    'social_wall' => array(
+      'template' => 'social-wall',
+      'variables' => array(),
+    ),
+  );
+}

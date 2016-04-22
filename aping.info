@@ -1,0 +1,6 @@
+name = apiNG
+description = apiNG implementation for Drupal
+package = Angular
+core = 7.x
+dependencies[] = libraries
+configure = admin/config/services/aping
