@@ -1,6 +1,6 @@
 # [apiNG](https://github.com/JohnnyTheTank/apiNG) implementation for Drupal
 
-Only Social wall implemented so far, to use it:
+Only [Social Wall](http://johnnythetank.github.io/apiNG//#demo) implemented so far
 
 ### 1. Install
 
@@ -52,7 +52,7 @@ to be able to add the directive  only to the pages where the block will be displ
 Some accounts require tokens, and they need to be specified in aping/aping-config.js more details about it [here](https://aping.readme.io/docs/configuration)
 
 ### 5. Hide your keys
-After adding your keys in aping-config.js remember to obfuscate the file with a tool like [this](https://javascriptobfuscator.com/Javascript-Obfuscator.aspx) 
+After adding your keys in aping-config.js remember to obfuscate the file with a tool like [this](https://javascriptobfuscator.com/Javascript-Obfuscator.aspx)
 
 ### 6. Enable the block
 Place the "apiNG Social Wall" block in any region to make it visible.
