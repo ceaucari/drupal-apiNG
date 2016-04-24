@@ -13,8 +13,7 @@ Right now it uses libraries from CDN but the option to use local libraries will 
 	drush aping-angular
 	drush aping-aping
 
-### 2. Add directive in html.tpl.php
-
+### 2. Add directive
 
 We need to add a directive on html.tpl.php like this:
 
@@ -46,15 +45,17 @@ Optional: If we want the directive to appear only on certain pages, add a prepro
 This way we can have a html--mypage.tpl.php
 to be able to add the directive  only to the pages where the block will be displayed.
 
-### 3. Add your accounts details on social-wall.tpl.php
+### 3. Add your accounts
+ Specify your accounts details on social-wall.tpl.php
 
-### 4. Create access tokens for your accounts and replace contents on aping/aping-config.js as specified [here](https://aping.readme.io/docs/configuration)
+### 4. Create access tokens
+Some accounts require tokens, and they need to be specified in aping/aping-config.js more details about it [here](https://aping.readme.io/docs/configuration)
 
 ### 5. Hide your keys
-
-After adding your keys in aping-config.js remember to obfuscate the file with a tool like [this](https://javascriptobfuscator.com/Javascript-Obfuscator.aspx)
+After adding your keys in aping-config.js remember to obfuscate the file with a tool like [this](https://javascriptobfuscator.com/Javascript-Obfuscator.aspx) 
 
 ### 6. Enable the block
+Place the "apiNG Social Wall" block in any region to make it visible.
 
 ---
 
