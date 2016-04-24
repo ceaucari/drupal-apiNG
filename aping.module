@@ -83,12 +83,13 @@ function aping_block_view($delta = '') {
             'https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js',
 
             // angular module
-            $path . '/social_wall.js',
+            $path . '/social-wall/social_wall.js',
           ),
 
           'css' => array(
             $path . '/aping/aping-design-default.css',
             'https://fonts.googleapis.com/css?family=Economica',
+            $path . '/social-wall/social-wall.css',
           ),
         ),
       );
