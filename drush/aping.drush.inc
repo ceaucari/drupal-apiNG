@@ -12,7 +12,7 @@
  * 'drush aping-angular' will install all the required libraries
  */
 
-define('APING_ANGULAR_DOWNLOAD_URI', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js');
+//define('APING_ANGULAR_DOWNLOAD_URI', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js');
 
 
 /**
@@ -35,13 +35,22 @@ function aping_drush_command() {
 
   // the key in the $items array is the name of the command.
   $items['aping-angular'] = array(
-    'callback' => 'drush_aping_angular',
+    'callback' => 'drush_aping_angular_download',
     'description' => dt('Download and install AngularJS.'),
     'bootstrap' => DRUSH_BOOTSTRAP_DRUSH, // No bootstrap.
     'arguments' => array(
       'path' => dt('Optional. A path where to install AngularJS. If omitted Drush will use the default location.'),
     ),
     'aliases' => array('apingangular'),
+  );
+  $items['aping-aping'] = array(
+    'callback' => 'drush_aping_aping_download',
+    'description' => dt('Download and install apiNG.'),
+    'bootstrap' => DRUSH_BOOTSTRAP_DRUSH, // No bootstrap.
+    'arguments' => array(
+      'path' => dt('Optional. A path where to install apiNG. If omitted Drush will use the default location.'),
+    ),
+    'aliases' => array('aping-self'),
   );
 
   return $items;
@@ -62,57 +71,59 @@ function aping_drush_command() {
 function aping_drush_help($section) {
   switch ($section) {
     case 'drush:aping-angular':
-      return dt('Download and install AngularJS, default location is sites/all/libraries.');
-
+      return dt('Download and install AngularJS, default location is sites/all/libraries/angularjs.');
+    case 'drush:aping-aping':
+      return dt('Download and install apiNG, default location is sites/all/libraries/aping.');
   }
 }
 
-/**
- * Command to download AngularJS.
- */
-function drush_aping_angular() {
-  $args = func_get_args();
-  if (!empty($args[0])) {
-    $path = $args[0];
+// TO DO: Loop through the libraries to install and keep it DRY
+
+// function to download AngularJS
+function drush_aping_angular_download() {
+  if(module_exists('libraries')) {
+    $path = 'sites/all/libraries/angularjs';
+
+    // Create the path if it does not exist.
+    if (!is_dir($path)) {
+      drush_op('mkdir', $path);
+      drush_log(dt('Directory @path was created', array('@path' => $path)), 'notice');
+    }
   }
   else {
-    $path = 'sites/all/libraries';
+    drush_log(dt('You need to install the libraries module first', array('@path' => $path)), 'error');
   }
-
-  // Create the path if it does not exist.
-  if (!is_dir($path)) {
-    drush_op('mkdir', $path);
-    drush_log(dt('Directory @path was created', array('@path' => $path)), 'notice');
-  }
-
-  // Set the directory to the download location.
-  $olddir = getcwd();
-  chdir($path);
-
-  $zip = APING_ANGULAR_DOWNLOAD_URI;
-  $dirname = 'angularjs';
-
-  // angularjs directory exists, bailing out
-  if (is_dir($dirname)) {
-    drush_log(dt('An existing AngularJS was found in @path, not continuing.', array('@path' => $path)), 'notice');
-    return;
-  }
-
-  // Download the zip archive
-  if ($filepath = drush_download_file($zip)) {
-    $filename = basename($filepath);
-
-    // Decompress the zip archive
-    drush_tarball_extract($filename);
-  }
-
-  if (is_dir($dirname)) {
-    drush_log(dt('AngularJS has been installed in @path', array('@path' => $path)), 'success');
+  drush_op('chdir', $path);
+  // Download the plugin.
+  if (drush_shell_exec('wget https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js')) {
+    drush_log(dt('angularjs has been downloaded to @path', array('@path' => $path)), 'success');
   }
   else {
-    drush_log(dt('Drush was unable to install AngularJS to @path', array('@path' => $path)), 'error');
+    drush_log(dt('Drush was unable to download angularjs to @path', array('@path' => $path)), 'error');
   }
+}
 
-  // Set working directory back to the previous working directory.
-  chdir($olddir);
+
+// function to download apiNG
+function drush_aping_aping_download() {
+  if(module_exists('libraries')) {
+    $path = 'sites/all/libraries/aping';
+
+    // Create the path if it does not exist.
+    if (!is_dir($path)) {
+      drush_op('mkdir', $path);
+      drush_log(dt('Directory @path was created', array('@path' => $path)), 'notice');
+    }
+  }
+  else {
+    drush_log(dt('You need to install the libraries module first', array('@path' => $path)), 'error');
+  }
+  drush_op('chdir', $path);
+  // Download the plugin.
+  if (drush_shell_exec('wget https://cdn.jsdelivr.net/aping/latest/aping.min.js')) {
+    drush_log(dt('apiNG has been downloaded to @path', array('@path' => $path)), 'success');
+  }
+  else {
+    drush_log(dt('Drush was unable to download apiNG to @path', array('@path' => $path)), 'error');
+  }
 }
