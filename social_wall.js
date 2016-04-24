@@ -2,7 +2,7 @@
 /**
  * Comment here...
  */
-var app = angular.module('plApp', [
+var app = angular.module('drupalApp', [
   'jtt_aping',
   'jtt_aping_youtube',
   'jtt_aping_instagram',
