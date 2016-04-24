@@ -4,6 +4,8 @@
  *
  * https://github.com/JohnnyTheTank/apiNG
  * apiNG implementation in Drupal
+ * @author César Castillo http://drupal.org/u/ceaucari
+ * @copyright GNU GPL
  */
 
 /**
@@ -19,16 +21,7 @@ function aping_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'aping.admin.inc',
   );
-  // $items['js/jquery_social_stream/' . JQUERY_SOCIAL_STREAM_TWITTER_PATH] = array(
-  //   'page callback' => 'jquery_social_stream_twitter_callback',
-  //   'file' => 'jquery_social_stream.js.inc',
-  //   'access callback' => TRUE,
-  // );
-  // $items['js/jquery_social_stream/' . JQUERY_SOCIAL_STREAM_FACEBOOK_PATH] = array(
-  //   'page callback' => 'jquery_social_stream_facebook_callback',
-  //   'file' => 'jquery_social_stream.js.inc',
-  //   'access callback' => TRUE,
-  // );
+
   return $items;
 }
 
