@@ -1,6 +1,8 @@
 # [apiNG](https://github.com/JohnnyTheTank/apiNG) implementation for Drupal
 
-Only [Social Wall](http://johnnythetank.github.io/apiNG//#demo) implemented so far
+Only [Social Wall](http://aping.js.org/) implemented so far
+
+[Sandbox page in drupal.org](https://www.drupal.org/sandbox/ceaucari/2712353)
 
 ### 1. Install
 
