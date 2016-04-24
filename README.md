@@ -1,6 +1,19 @@
-## Install
+# [apiNG](https://github.com/JohnnyTheTank/apiNG) implementation for Drupal
 
-## Add directive in html.tpl.php
+Only Social wall implemented so far, to use it:
+
+### 1. Install
+
+Install like any drupal module
+
+Right now it uses libraries from CDN but the option to use local libraries will be available too.
+
+##### Drush commands available to download libraries:
+
+	drush aping-angular
+	drush aping-aping
+
+### 2. Add directive in html.tpl.php
 
 
 We need to add a directive on html.tpl.php like this:
@@ -9,7 +22,7 @@ We need to add a directive on html.tpl.php like this:
 			<!-- REST OF THE FILE HERE -->
 	</html>
 
-If we want the directive to appear only on certain pages, add a preprocess function on the theme's template.php file like this: (replace MYTHEME)
+Optional: If we want the directive to appear only on certain pages, add a preprocess function on the theme's template.php file like this: (replace MYTHEME)
 
 
 	/**
@@ -33,9 +46,15 @@ If we want the directive to appear only on certain pages, add a preprocess funct
 This way we can have a html--mypage.tpl.php
 to be able to add the directive  only to the pages where the block will be displayed.
 
-## Hide your keys
+### 3. Add your accounts details on social-wall.tpl.php
+
+### 4. Create access tokens for your accounts and replace contents on aping/aping-config.js as specified [here](https://aping.readme.io/docs/configuration)
+
+### 5. Hide your keys
 
 After adding your keys in aping-config.js remember to obfuscate the file with a tool like [this](https://javascriptobfuscator.com/Javascript-Obfuscator.aspx)
+
+### 6. Enable the block
 
 ---
 
@@ -44,4 +63,3 @@ After adding your keys in aping-config.js remember to obfuscate the file with a 
 * Add the angular directive to the html.tpl.php file with a preprocess function or using jquery.
 * Add configuration options to the block and auto generte the aping-config.js file obfuscated.
 * Load libraries from libraries folder
-* Drush asw (apiNG Social Wall) install command to dl libraries
