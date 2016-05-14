@@ -23,7 +23,7 @@ angular.module('jtt_aping_design_default', ['wu.masonry', 'linkify', 'angularMom
                 case "tumblr":
                 case "rss":
                 case "bandsintown":
-                    return "/sites/all/modules/aping/aping/img/"+_platform+".png";
+                    return "/modules/custom/aping/aping/img/"+_platform+".png";
             }
 
             return false;
