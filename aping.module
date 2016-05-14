@@ -43,7 +43,9 @@ function aping_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'social-wall':
-      $path = drupal_get_path('module', 'aping');
+      $module_path = drupal_get_path('module', 'aping');
+      $ng_path = libraries_get_path('angular');
+
       $block['subject'] = t('Social Wall');
       $block['content'] = array(
         '#theme' => 'social_wall',
@@ -51,21 +53,23 @@ function aping_block_view($delta = '') {
           'js' => array(
 
             // Angular
-            'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
+            //'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
+            array(
+              'data' => $ng_path . '/angular.js',
+              'weight' => -9999,
+            ),
 
             // apiNG
             'https://cdn.jsdelivr.net/aping/latest/aping.min.js',
 
             // apiNG config for api keys (only for plugins, that needs api keys)
-            $path . '/aping/aping-config.js',
+            $module_path . '/aping/aping-config.js',
 
             // apiNG plugins
             'https://cdn.jsdelivr.net/aping.plugin-facebook/latest/aping-plugin-facebook.min.js',
             'https://cdn.jsdelivr.net/aping.plugin-codebird/latest/aping-plugin-codebird.min.js',
             'https://cdn.jsdelivr.net/aping.plugin-instagram/latest/aping-plugin-instagram.min.js',
             'https://cdn.jsdelivr.net/aping.plugin-youtube/latest/aping-plugin-youtube.min.js',
-
-            // Not used now
             'https://cdn.jsdelivr.net/aping.plugin-vimeo/latest/aping-plugin-vimeo.min.js',
             'https://cdn.jsdelivr.net/aping.plugin-flickr/latest/aping-plugin-flickr.min.js',
             'https://cdn.jsdelivr.net/aping.plugin-dailymotion/latest/aping-plugin-dailymotion.min.js',
@@ -73,7 +77,7 @@ function aping_block_view($delta = '') {
             'https://cdn.jsdelivr.net/aping.plugin-rss/latest/aping-plugin-rss.min.js',
 
             // apiNG design
-            $path . '/aping/aping-design-default.js',
+            $module_path . '/aping/aping-design-default.js',
 
             // apiNG design dependencies
             'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.min.js',
@@ -83,13 +87,13 @@ function aping_block_view($delta = '') {
             'https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js',
 
             // angular module
-            $path . '/social-wall/social_wall.js',
+            $module_path . '/social_wall.js',
           ),
 
           'css' => array(
-            $path . '/aping/aping-design-default.css',
+            $module_path . '/aping/aping-design-default.css',
             'https://fonts.googleapis.com/css?family=Economica',
-            $path . '/social-wall/social-wall.css',
+            $module_path . '/social-wall.css',
           ),
         ),
       );

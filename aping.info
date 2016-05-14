@@ -1,6 +1,6 @@
 name = apiNG
 description = apiNG implementation for Drupal
-package = Angular
+package = LMNT
 core = 7.x
 dependencies[] = libraries
 dependencies[] = jquery_update

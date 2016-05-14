@@ -1,4 +1,4 @@
-# [apiNG](https://github.com/JohnnyTheTank/apiNG) implementation for Drupal
+# [apiNG](https://github.com/JohnnyTheTank/apiNG) implementation for Drupal 7
 
 Only [Social Wall](http://aping.js.org/) implemented so far
 
