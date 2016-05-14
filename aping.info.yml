@@ -1,0 +1,7 @@
+name: aping
+type: module
+description: apiNG implementation for Drupal
+core: 8.x
+package: Angular
+dependencies:
+  # - libraries
