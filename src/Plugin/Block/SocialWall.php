@@ -20,6 +20,7 @@ class SocialWall extends BlockBase {
   public function build() {
     return array(
       '#theme' => 'social_wall',
+      // '#module_path' => [drupal_get_path('module', 'aping')],
       '#variables' => ['name' => 'Social Wall'],
       '#attached' => array(
         'library' =>  array(
@@ -34,8 +35,6 @@ class SocialWall extends BlockBase {
 
           // aping Config.
           'aping/aping.socialwall'
-
-
         ),
       ),
     );

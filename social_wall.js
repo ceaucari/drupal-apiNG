@@ -1,6 +1,7 @@
 
 /**
- * Comment here...
+ * @file
+ * Contains aping social wall app.
  */
 var app = angular.module('drupalApp', [
   'jtt_aping',
