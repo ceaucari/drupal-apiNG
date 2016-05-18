@@ -52,6 +52,6 @@ aping.socialwall:
     aping/aping-design-default.js: {}
     aping/aping-config.js: {}
     social_wall.js: {}
-  # dependencies:
+  dependencies:
   #   - core/jquery
-  #   - core/drupalSettings
+    - core/drupalSettings

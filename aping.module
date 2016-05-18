@@ -27,7 +27,6 @@ function aping_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_theme().
  */
 function aping_theme() {
-  // $module_path = drupal_get_path('module', 'aping');
   $theme['social_wall'] = [
     'variables' => ['name' => NULL],
     'template' => 'social-wall',
@@ -35,7 +34,7 @@ function aping_theme() {
   return $theme;
 }
 
-// Create a path variable relative to the module folder
+// Store relative path to the module folder in a variable.
 function aping_preprocess_social_wall(&$variables) {
-  $variables['modulepath'] = '/' . drupal_get_path('module', 'aping');
+  $variables['modulepath'] = drupal_get_path('module', 'aping');
 }
