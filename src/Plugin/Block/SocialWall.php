@@ -13,39 +13,13 @@ use Drupal\Core\Block\BlockBase;
  * )
  */
 class SocialWall extends BlockBase {
-
-  // /**
-  //  * {@inheritdoc} THIS WORKS OK
-  //  */
-  // public function build() {
-  //   return array(
-  //     '#theme' => 'social_wall',
-  //     '#variables' => ['name' => 'Social Wall'],
-  //     '#attached' => array(
-  //       'library' =>  array(
-  //         // Angular
-  //         'aping/aping.angularjs',
-  //
-  //         // apiNG & plugins
-  //         'aping/aping.aping',
-  //
-  //         // apiNG design dependencies
-  //         'aping/aping.dependancies',
-  //
-  //         // aping Config.
-  //         'aping/aping.socialwall'
-  //       ),
-  //     ),
-  //   );
-  // }
-
   /**
    * {@inheritdoc}
    */
   public function build() {
     $build = [];
     $build['#theme'] = 'social_wall';
-    $build['#variables']['name'] = 'Social Wall';
+    // $build['#variables']['name'] = 'Social Wall';
     $build['#attached']['library'][] = 'aping/aping.angularjs';
     $build['#attached']['library'][] = 'aping/aping.aping';
     $build['#attached']['library'][] = 'aping/aping.dependancies';

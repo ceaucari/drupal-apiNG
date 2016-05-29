@@ -19,11 +19,9 @@
               $scope.$on('apiNG.resultMerged', function () {
                   //$scope.workingCopy = $scope.results;
               });
-
-
+              
               $scope.getPlatformIcon = function (_platform) {
                   var modulePath = drupalSettings.aping.apingConfig.path;
-                  //var modulePath = "/modules/aping";
                   switch (_platform) {
                       case "youtube":
                       case "twitter":

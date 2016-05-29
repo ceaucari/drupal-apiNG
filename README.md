@@ -8,13 +8,6 @@ Only [Social Wall](http://aping.js.org/) implemented so far
 
 Install like any drupal module
 
-Right now it uses libraries from CDN but the option to use local libraries will be available too.
-
-##### Drush commands available to download libraries:
-
-	drush aping-angular
-	drush aping-aping
-
 ### 2. Enable the block
 Place the "apiNG Social Wall" block in any region and see it in action with the default accounts.
 
