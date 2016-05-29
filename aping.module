@@ -34,7 +34,7 @@ function aping_theme() {
   return $theme;
 }
 
-// Store relative path to the module folder in a variable.
+// Store relative path to the module in a variable used in social-wall.html.twig.
 function aping_preprocess_social_wall(&$variables) {
   $variables['modulepath'] = drupal_get_path('module', 'aping');
 }

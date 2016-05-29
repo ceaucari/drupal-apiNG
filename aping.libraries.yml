@@ -31,7 +31,7 @@ aping.aping:
     https://cdn.jsdelivr.net/aping.plugin-tumblr/latest/aping-plugin-tumblr.min.js: { type: external, minified: true }
     https://cdn.jsdelivr.net/aping.plugin-rss/latest/aping-plugin-rss.min.js: { type: external, minified: true }
 
-# apiNG design dependencies
+# apiNG design dependencies (fonts are missing)
 aping.dependancies:
   js:
     https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.min.js: { type: external, minified: true }
@@ -41,17 +41,35 @@ aping.dependancies:
     https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js: { type: external, minified: true }
 
 
-# apiNG Config.
+# apiNG Social Wall.
 aping.socialwall:
   version: 1.x
   css:
     theme:
-      aping/aping-design-default.css: {}
       social-wall.css: {}
   js:
-    aping/aping-design-default.js: {}
-    aping/aping-config.js: {}
     social_wall.js: {}
+
+# apiNG Design.
+aping.design:
+  version: 1.x
+  css:
+    theme:
+      aping/aping-design-default.css: {}
+      https://fonts.googleapis.com/css?family=Economica: {}
+    component:
+      https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css: {}
+  js:
+    aping/aping-design-default.js: {}
   dependencies:
-  #   - core/jquery
+   # - core/jquery
+    - core/drupalSettings
+
+# apiNG Config.
+apingConfig:
+  version: 1.x
+  js:
+    aping/aping-config.js: {}
+  dependencies:
+   # - core/jquery
     - core/drupalSettings

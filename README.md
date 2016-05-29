@@ -31,7 +31,8 @@ After adding your keys in aping-config.js remember to obfuscate the file with a 
 ---
 
 #### TO DO:
-* Make paths relative to module instead of drupal root for images in aping-design-default.js
-* Add configuration options to the block and auto generte the aping-config.js file obfuscated.
-* Load bootstrap on non bootstrap themes
-* create hook uninstall ?
+* Add configuration options to the block
+* Auto generte the aping-config.js file obfuscated
+* Stop loading bootstrap again on bootstrap themes
+* Config for fonts
+* Blocks for each Individual Service
